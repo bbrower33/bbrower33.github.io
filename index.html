@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Brian Brower — IT Portfolio</title>
+  <title>Brian Brower</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -61,6 +61,7 @@
     }
 
     .nav-links a {
+      position: relative;
       color: var(--muted);
       text-decoration: none;
       font-size: 0.875rem;
@@ -69,7 +70,31 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--text); }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0;
+      bottom: -0.6rem;
+      height: 2px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.2s ease;
+      box-shadow: 0 0 16px rgba(74,144,217,0.7);
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--text); }
+
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a.active::after,
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
 
     /* ── Hero ──────────────────────────────────────────── */
     #hero {
@@ -499,6 +524,7 @@
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
+      <li><a href="/websites/">Websites</a></li>
     </ul>
   </nav>
 
@@ -507,7 +533,7 @@
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Open to IT Internships &amp; Co-ops</div>
+      <div class="hero-eyebrow">Open to I.T. or Software Development Internships &amp; Co-ops</div>
       <h1>Brian <span class="accent">Brower</span></h1>
       <div class="hero-terminal">
         <span class="prompt">$</span><span class="typed" id="typed"></span><span class="cursor"></span>
@@ -537,12 +563,12 @@
             <div class="stat-label">GPA at Kent State</div>
           </div>
           <div class="stat-card">
-            <div class="stat-num">Several</div>
+            <div class="stat-num">10+</div>
             <div class="stat-label">Person team managed</div>
           </div>
           <div class="stat-card">
             <div class="stat-num">2+</div>
-            <div class="stat-label">Years of Python & C++</div>
+            <div class="stat-label">Years of Python, HTML/CSS/JS, & C++</div>
           </div>
           <div class="stat-card">
             <div class="stat-num">∞</div>
@@ -567,7 +593,9 @@
             <span class="tag">Python</span>
             <span class="tag">C++</span>
             <span class="tag">SQL</span>
+            <span class="tag">JavaScript</span>
             <span class="tag">HTML/CSS</span>
+            <span class="tag">TypeScript</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -579,6 +607,9 @@
             <span class="tag">Google Workspace</span>
             <span class="tag">Windows</span>
             <span class="tag">Microsoft 365</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">React</span>
+            <span class="tag">FastAPI</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -691,7 +722,7 @@
       <div class="section-label reveal">Contact</div>
       <h2 class="reveal">Let's Connect</h2>
       <div class="section-divider reveal" style="margin-left:auto;margin-right:auto;"></div>
-      <p class="reveal">I'm actively seeking IT internships and co-ops for 2026–2027. If you're looking for someone who solves problems, learns fast, and ships real work — let's talk.</p>
+      <p class="reveal">I'm actively seeking IT internships and co-ops for 2026–2027, and freelance website work. If you're looking for someone who solves problems, learns fast, and builds quality programs, let's talk.</p>
       <div class="contact-links reveal">
         <a href="mailto:bbrower2@kent.edu" class="btn btn-primary">bbrower2@kent.edu</a>
         <a href="tel:3306906507" class="btn btn-secondary">(330) 690-6507</a>
@@ -704,12 +735,52 @@
   </footer>
 
   <script>
+    // ── Active nav underline ───────────────────────────
+    const navLinks = Array.from(document.querySelectorAll('.nav-links a'));
+    const sections = Array.from(document.querySelectorAll('section[id]'));
+
+    function setActiveLink(sectionId) {
+      navLinks.forEach((link) => {
+        const linkHash = link.getAttribute('href');
+        const isActive = linkHash === `#${sectionId}`;
+        link.classList.toggle('active', isActive);
+      });
+    }
+
+    function updateActiveNav() {
+      const currentHash = window.location.hash;
+
+      if (currentHash) {
+        const hashId = currentHash.replace('#', '');
+        if (document.getElementById(hashId)) {
+          setActiveLink(hashId);
+          return;
+        }
+      }
+
+      const scrollPos = window.scrollY + 180;
+      let activeId = 'hero';
+
+      sections.forEach((section) => {
+        if (scrollPos >= section.offsetTop) {
+          activeId = section.id;
+        }
+      });
+
+      setActiveLink(activeId);
+    }
+
+    updateActiveNav();
+    window.addEventListener('scroll', updateActiveNav, { passive: true });
+    window.addEventListener('hashchange', updateActiveNav);
+
     // ── Typewriter ──────────────────────────────────────
     const phrases = [
-      'CS Student @ Kent State',
+      'CS Student',
+      'Web Developer',
       'IT Problem Solver',
       'Automation Builder',
-      'Intern Candidate — Spring 2027',
+      'Intern Candidate',
     ];
     let pi = 0, ci = 0, deleting = false;
     const el = document.getElementById('typed');

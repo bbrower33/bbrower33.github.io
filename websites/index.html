@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Website Projects | Brian Brower</title>
+
+    <meta
+        name="description"
+        content="Website design and development projects by Brian Brower."
+    >
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <nav>
+        <a href="/#hero" class="nav-logo">Brian<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#skills">Skills</a></li>
+            <li><a href="/#experience">Experience</a></li>
+            <li><a href="/#education">Education</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            <li><a href="/websites/" class="active">Websites</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =========================================
+             PAGE HEADER
+        ========================================== -->
+
+        <section class="page-header">
+
+            <div class="container">
+
+                <p class="eyebrow reveal">
+                    Website Projects
+                </p>
+
+                <h1 class="reveal">
+                    Websites I've
+                    <span>designed &amp; built.</span>
+                </h1>
+
+                <p class="intro-text reveal">
+                    A selection of website projects created for
+                    local businesses and professional portfolios.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================================
+             PROJECTS
+        ========================================== -->
+
+        <section class="projects" id="projects">
+
+            <div class="container">
+
+                <div class="project-grid">
+
+
+                    <!-- =========================================
+                         OAKSTONE
+                    ========================================== -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-image">
+
+                            <img
+                                src="images/oakstone-preview.jpg"
+                                alt="Oakstone Landscaping website preview"
+                            >
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <p class="project-type">
+                                Landscaping
+                            </p>
+
+                            <h2>
+                                Oakstone Landscaping
+                            </h2>
+
+                            <p>
+                                A modern landscaping website concept
+                                designed to give a local service business
+                                a professional online presence.
+                            </p>
+
+                            <a
+                                href="https://oakstone-demo.brianbrower.me"
+                                class="project-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Live Demo <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =========================================
+                         EVERGREEN
+                    ========================================== -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-image">
+
+                            <img
+                                src="images/evergreen-preview.jpg"
+                                alt="Evergreen Landscaping website preview"
+                            >
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <p class="project-type">
+                                Landscaping
+                            </p>
+
+                            <h2>
+                                Evergreen Landscaping
+                            </h2>
+
+                            <p>
+                                A clean, professional website concept
+                                focused on presenting services and
+                                generating new customer inquiries.
+                            </p>
+
+                            <a
+                                href="https://evergreen-demo.brianbrower.me"
+                                class="project-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Live Demo <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                    <!-- =========================================
+                         NATURE'S EDGE
+                    ========================================== -->
+
+                    <article class="project-card reveal">
+
+                        <div class="project-image">
+
+                            <img
+                                src="images/natures-edge-preview.jpg"
+                                alt="Nature's Edge Landscaping website preview"
+                            >
+
+                        </div>
+
+
+                        <div class="project-info">
+
+                            <p class="project-type">
+                                Landscaping
+                            </p>
+
+                            <h2>
+                                Nature's Edge Landscaping
+                            </h2>
+
+                            <p>
+                                A complete website redesign for a
+                                Northeast Ohio landscaping company,
+                                built around a strong local brand.
+                            </p>
+
+                            <a
+                                href="https://natures-edge.brianbrower.me"
+                                class="project-link"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View Live Demo <span>→</span>
+                            </a>
+
+                        </div>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer reveal">
+
+        <div class="container">
+
+            <p>
+                © 2026 Brian Brower
+            </p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        // ── Scroll Reveal ───────────────────────────────
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("visible");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+
+        document
+            .querySelectorAll(".reveal")
+            .forEach((element) => {
+
+                observer.observe(element);
+
+            });
+
+
+        // ── Show the projects divider only after the preview section is reached ──
+        const projectsSection = document.getElementById("projects");
+
+        if (projectsSection) {
+            const projectsObserver = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        projectsSection.classList.add("visible");
+                        projectsObserver.unobserve(projectsSection);
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            projectsObserver.observe(projectsSection);
+        }
+
+    </script>
+
+</body>
+
+</html>
