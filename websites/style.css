@@ -113,6 +113,8 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    min-width: 0;
 
     height: 64px;
     padding: 0 2.5rem;
@@ -150,7 +152,29 @@ nav {
     display: flex;
     align-items: center;
     gap: 2rem;
+    flex: 1 1 auto;
+    min-width: 0;
     list-style: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    -webkit-overflow-scrolling: touch;
+
+}
+
+
+.nav-links::-webkit-scrollbar {
+
+    display: none;
+
+}
+
+
+.nav-links li {
+
+    flex: 0 0 auto;
 
 }
 
@@ -164,6 +188,7 @@ nav {
     font-size: 0.875rem;
     font-weight: 500;
     letter-spacing: 0.02em;
+    white-space: nowrap;
 
     transition: color 0.2s ease;
 
@@ -755,7 +780,24 @@ nav {
 
     nav {
 
-        gap: 1.25rem;
+        gap: 1rem;
+        padding: 0 1rem;
+
+    }
+
+
+    .nav-logo {
+
+        flex-shrink: 0;
+
+    }
+
+
+    .nav-links {
+
+        gap: 1rem;
+        margin-left: 0.75rem;
+        padding-bottom: 0.15rem;
 
     }
 
