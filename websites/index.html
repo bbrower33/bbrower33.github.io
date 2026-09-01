@@ -197,7 +197,8 @@
                         <div class="project-image">
 
                             <img
-                                src="images/natures-edge-preview.jpg"
+                                id="nature-edge-preview"
+                                src="https://brianbrower.me/natures-edge/images/mowing-1.jpg"
                                 alt="Nature's Edge Landscaping website preview"
                             >
 
@@ -313,6 +314,25 @@
             }, { threshold: 0.2 });
 
             projectsObserver.observe(projectsSection);
+        }
+
+        // ── Nature's Edge rotating preview ─────────────────────
+        const natureEdgePreview = document.getElementById("nature-edge-preview");
+        const natureEdgeImages = [
+            "https://brianbrower.me/natures-edge/images/mowing-1.jpg",
+            "https://brianbrower.me/natures-edge/images/mulch-1.jpg",
+            "https://brianbrower.me/natures-edge/images/bed-creation-1.jpg",
+            "https://brianbrower.me/natures-edge/images/edging-1.JPG",
+            "https://brianbrower.me/natures-edge/images/tree-trimming-1.jpg"
+        ];
+
+        if (natureEdgePreview) {
+            let natureEdgeIndex = 0;
+
+            setInterval(() => {
+                natureEdgeIndex = (natureEdgeIndex + 1) % natureEdgeImages.length;
+                natureEdgePreview.src = natureEdgeImages[natureEdgeIndex];
+            }, 2400);
         }
 
     </script>
