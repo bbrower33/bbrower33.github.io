@@ -354,35 +354,48 @@
             }
         ];
 
-        const activePreviewUrls = new Map();
+        const cards = previewSets
+            .map(({ id, images, startIndex }) => {
+                const preview = document.getElementById(id);
+                if (!preview) return null;
 
-        previewSets.forEach(({ id, images, startIndex }) => {
-            const preview = document.getElementById(id);
-            if (!preview) return;
+                const card = {
+                    id,
+                    preview,
+                    images,
+                    index: startIndex % images.length
+                };
 
-            let index = startIndex % images.length;
-            preview.src = images[index];
-            activePreviewUrls.set(id, images[index]);
+                preview.src = images[card.index];
+                return card;
+            })
+            .filter(Boolean);
 
-            setInterval(() => {
-                let nextIndex = index;
+        const getActiveUrls = () => {
+            return new Map(cards.map((card) => [card.id, card.images[card.index]]));
+        };
+
+        setInterval(() => {
+            const activeUrls = getActiveUrls();
+
+            cards.forEach((card) => {
+                let nextIndex = (card.index + 1) % card.images.length;
                 let attempts = 0;
 
-                do {
-                    nextIndex = (nextIndex + 1) % images.length;
-                    attempts += 1;
-                } while (
-                    attempts < images.length &&
-                    Array.from(activePreviewUrls.entries()).some(([otherId, otherUrl]) => {
-                        return otherId !== id && otherUrl === images[nextIndex];
+                while (
+                    attempts < card.images.length &&
+                    Array.from(activeUrls.entries()).some(([otherId, url]) => {
+                        return otherId !== card.id && url === card.images[nextIndex];
                     })
-                );
+                ) {
+                    nextIndex = (nextIndex + 1) % card.images.length;
+                    attempts += 1;
+                }
 
-                index = nextIndex;
-                preview.src = images[index];
-                activePreviewUrls.set(id, images[index]);
-            }, 2400);
-        });
+                card.index = nextIndex;
+                card.preview.src = card.images[card.index];
+            });
+        }, 2400);
 
     </script>
 
