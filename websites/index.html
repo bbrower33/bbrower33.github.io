@@ -105,7 +105,8 @@
                         <div class="project-image">
 
                             <img
-                                src="images/oakstone-preview.jpg"
+                                id="oakstone-preview"
+                                src="https://brianbrower.me/oakstone-demo/images/tree-trimming-2.jpg"
                                 alt="Oakstone Landscaping website preview"
                             >
 
@@ -151,7 +152,8 @@
                         <div class="project-image">
 
                             <img
-                                src="images/evergreen-preview.jpg"
+                                id="evergreen-preview"
+                                src="https://brianbrower.me/evergreen-demo/images/edging-3.jpg"
                                 alt="Evergreen Landscaping website preview"
                             >
 
@@ -316,24 +318,50 @@
             projectsObserver.observe(projectsSection);
         }
 
-        // ── Nature's Edge rotating preview ─────────────────────
-        const natureEdgePreview = document.getElementById("nature-edge-preview");
-        const natureEdgeImages = [
-            "https://brianbrower.me/natures-edge/images/mowing-1.jpg",
-            "https://brianbrower.me/natures-edge/images/mulch-1.jpg",
-            "https://brianbrower.me/natures-edge/images/bed-creation-1.jpg",
-            "https://brianbrower.me/natures-edge/images/edging-1.JPG",
-            "https://brianbrower.me/natures-edge/images/tree-trimming-1.jpg"
+        const previewSets = [
+            {
+                id: "nature-edge-preview",
+                images: [
+                    "https://brianbrower.me/natures-edge/images/mowing-1.jpg",
+                    "https://brianbrower.me/natures-edge/images/mulch-1.jpg",
+                    "https://brianbrower.me/natures-edge/images/bed-creation-1.jpg",
+                    "https://brianbrower.me/natures-edge/images/edging-1.JPG",
+                    "https://brianbrower.me/natures-edge/images/tree-trimming-1.jpg"
+                ]
+            },
+            {
+                id: "evergreen-preview",
+                images: [
+                    "https://brianbrower.me/evergreen-demo/images/edging-3.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/mulch-2.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/tree-trimming-2.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/hedge-trimming-1.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/bed-creation-2.jpg"
+                ]
+            },
+            {
+                id: "oakstone-preview",
+                images: [
+                    "https://brianbrower.me/oakstone-demo/images/tree-trimming-2.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/edging-3.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/mulch-4.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/hedge-trimming-1.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/bed-creation-2.jpg"
+                ]
+            }
         ];
 
-        if (natureEdgePreview) {
-            let natureEdgeIndex = 0;
+        previewSets.forEach(({ id, images }) => {
+            const preview = document.getElementById(id);
+            if (!preview) return;
+
+            let index = 0;
 
             setInterval(() => {
-                natureEdgeIndex = (natureEdgeIndex + 1) % natureEdgeImages.length;
-                natureEdgePreview.src = natureEdgeImages[natureEdgeIndex];
+                index = (index + 1) % images.length;
+                preview.src = images[index];
             }, 2400);
-        }
+        });
 
     </script>
 
