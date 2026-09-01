@@ -327,39 +327,60 @@
                     "https://brianbrower.me/natures-edge/images/bed-creation-1.jpg",
                     "https://brianbrower.me/natures-edge/images/edging-1.JPG",
                     "https://brianbrower.me/natures-edge/images/tree-trimming-1.jpg"
-                ]
+                ],
+                startIndex: 0
             },
             {
                 id: "evergreen-preview",
                 images: [
-                    "https://brianbrower.me/evergreen-demo/images/edging-3.jpg",
-                    "https://brianbrower.me/evergreen-demo/images/mulch-2.jpg",
-                    "https://brianbrower.me/evergreen-demo/images/tree-trimming-2.jpg",
-                    "https://brianbrower.me/evergreen-demo/images/hedge-trimming-1.jpg",
-                    "https://brianbrower.me/evergreen-demo/images/bed-creation-2.jpg"
-                ]
+                    "https://brianbrower.me/evergreen-demo/images/mowing-1.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/mulch-1.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/bed-creation-1.jpg",
+                    "https://brianbrower.me/evergreen-demo/images/edging-1.JPG",
+                    "https://brianbrower.me/evergreen-demo/images/tree-trimming-1.jpg"
+                ],
+                startIndex: 2
             },
             {
                 id: "oakstone-preview",
                 images: [
-                    "https://brianbrower.me/oakstone-demo/images/tree-trimming-2.jpg",
-                    "https://brianbrower.me/oakstone-demo/images/edging-3.jpg",
-                    "https://brianbrower.me/oakstone-demo/images/mulch-4.jpg",
-                    "https://brianbrower.me/oakstone-demo/images/hedge-trimming-1.jpg",
-                    "https://brianbrower.me/oakstone-demo/images/bed-creation-2.jpg"
-                ]
+                    "https://brianbrower.me/oakstone-demo/images/mowing-1.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/mulch-1.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/bed-creation-1.jpg",
+                    "https://brianbrower.me/oakstone-demo/images/edging-1.JPG",
+                    "https://brianbrower.me/oakstone-demo/images/tree-trimming-1.jpg"
+                ],
+                startIndex: 4
             }
         ];
 
-        previewSets.forEach(({ id, images }) => {
+        const activePreviewUrls = new Map();
+
+        previewSets.forEach(({ id, images, startIndex }) => {
             const preview = document.getElementById(id);
             if (!preview) return;
 
-            let index = 0;
+            let index = startIndex % images.length;
+            preview.src = images[index];
+            activePreviewUrls.set(id, images[index]);
 
             setInterval(() => {
-                index = (index + 1) % images.length;
+                let nextIndex = index;
+                let attempts = 0;
+
+                do {
+                    nextIndex = (nextIndex + 1) % images.length;
+                    attempts += 1;
+                } while (
+                    attempts < images.length &&
+                    Array.from(activePreviewUrls.entries()).some(([otherId, otherUrl]) => {
+                        return otherId !== id && otherUrl === images[nextIndex];
+                    })
+                );
+
+                index = nextIndex;
                 preview.src = images[index];
+                activePreviewUrls.set(id, images[index]);
             }, 2400);
         });
 
