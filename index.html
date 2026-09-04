@@ -429,6 +429,70 @@
       font-size: 0.8rem;
     }
 
+    /* ── Projects ──────────────────────────────────────── */
+    .project-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .project-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .project-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.3rem;
+    }
+
+    .project-date {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.9rem;
+    }
+
+    .project-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .project-card ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-card ul li {
+      font-size: 0.9rem;
+      color: var(--muted);
+      padding-left: 1.1rem;
+      position: relative;
+      margin-bottom: 0.4rem;
+    }
+
+    .project-card ul li::before {
+      content: '→';
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-size: 0.8rem;
+    }
+
     /* ── Education ─────────────────────────────────────── */
     .edu-card {
       background: var(--surface);
@@ -528,6 +592,7 @@
       }
       .nav-links a { font-size: 0.8rem; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .project-grid { grid-template-columns: 1fr; }
       .edu-card { flex-direction: column; gap: 1rem; padding: 1.5rem; }
       section { padding: 4rem 1.25rem; }
     }
@@ -547,6 +612,7 @@
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
       <li><a href="/websites/">Websites</a></li>
@@ -558,7 +624,7 @@
     <div class="hero-grid"></div>
     <div class="hero-glow"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Open to I.T. or Software Development Internships &amp; Co-ops</div>
+      <div class="hero-eyebrow">Open to IT, Software Development &amp; Business Ops Internships</div>
       <h1>Brian <span class="accent">Brower</span></h1>
       <div class="hero-terminal">
         <span class="prompt">$</span><span class="typed" id="typed"></span><span class="cursor"></span>
@@ -574,13 +640,13 @@
   <section id="about">
     <div class="container">
       <div class="section-label reveal">About</div>
-      <h2 class="reveal">I build things. I fix things.<br>Then I automate them.</h2>
+      <h2 class="reveal">I build things. I fix things.<br> I automate them.</h2>
       <div class="section-divider reveal"></div>
       <div class="about-grid">
         <div class="about-text reveal">
-          <p>I'm a <strong>Computer Science student at Kent State University</strong> with a 3.2 GPA and a hands-on approach to technology. I don't wait for a class to teach me something — I pick a problem, research a solution, build it, and put it to work.</p>
-          <p>That mindset started when I co-founded a landscaping business and realized managing seven people manually wasn't going to scale. I <strong>built the systems myself</strong> — CRM, automated invoicing, Python scripts for intake — and watched the business grow because of it.</p>
-          <p>I'm currently seeking IT internships and co-ops where I can bring that same problem-solving energy to an enterprise environment, contribute to real projects, and grow fast.</p>
+          <p>I'm a <strong>Computer Science student at Kent State University</strong> with a 3.2 GPA and a hands-on approach to technology. I learn beyond the classroom through picking a problem, researching a solution, building it, and putting it to work.</p>
+          <p>That mindset started when I co-founded Nature's Edge Landscaping and realized managing ten plus people manually wasn't going to scale. I <strong>built the systems myself</strong>, including: a CRM, automated invoicing, Python scripts for intake, and I watched the business grow because of it.</p>
+          <p>I'm currently seeking IT internships and co-ops where I can bring that same problem-solving mindset to an enterprise environment, contribute to real projects, and continue learning fast.</p>
         </div>
         <div class="about-stats reveal">
           <div class="stat-card">
@@ -625,16 +691,35 @@
         </div>
         <div class="skill-card reveal">
           <div class="skill-icon">⚙️</div>
-          <h3>Tools & Platforms</h3>
+          <h3>DevOps/Infra</h3>
           <div class="skill-tags">
             <span class="tag">Git</span>
+            <span class="tag">GitHub</span>
+            <span class="tag">CI/CD concepts</span>
+            <span class="tag">VirtualBox</span>
+            <span class="tag">Linux (basics)</span>
+            <span class="tag">Bash (learning)</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">🛠️</div>
+          <h3>Tools</h3>
+          <div class="skill-tags">
             <span class="tag">VS Code</span>
             <span class="tag">Google Workspace</span>
-            <span class="tag">Windows</span>
             <span class="tag">Microsoft 365</span>
             <span class="tag">Node.js</span>
             <span class="tag">React</span>
             <span class="tag">FastAPI</span>
+            <span class="tag">Supabase</span>
+          </div>
+        </div>
+        <div class="skill-card reveal">
+          <div class="skill-icon">🤖</div>
+          <h3>AI Tools</h3>
+          <div class="skill-tags">
+            <span class="tag">Copilot</span>
+            <span class="tag">Claude Code</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -646,6 +731,8 @@
             <span class="tag">IT Infrastructure</span>
             <span class="tag">Automation</span>
             <span class="tag">TCP/IP</span>
+            <span class="tag">DNS</span>
+            <span class="tag">VPNs</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -677,8 +764,8 @@
           <div class="timeline-org">Nature's Edge Landscaping — Stow, OH</div>
           <ul>
             <li>Built and scaled a multi-employee service business from the ground up</li>
-            <li>Implemented a CRM system, automated invoicing, quoting, and intake workflows with Python and Google Workspace</li>
-            <li>Managed branding, digital advertising, and client communication strategy utilizing automation</li>
+            <li>Built and deployed Python automation scripts and Google Workspace integrations for invoicing, scheduling, and client intake — reducing manual workload significantly</li>
+            <li>Managed CRM deployment, system configuration, and ongoing administration across a live multi-user business environment</li>
           </ul>
         </div>
 
@@ -688,8 +775,9 @@
           <h3>IT Capstone Shadow</h3>
           <div class="timeline-org">Davey Tree — Kent, OH</div>
           <ul>
-            <li>Shadowed IT professionals in an enterprise environment, observing ticketing systems and infrastructure support</li>
-            <li>Documented cybersecurity practices, system maintenance, and network operations at scale</li>
+            <li>Gained hands-on exposure to enterprise IT infrastructure, observing server environments, ticketing systems, and system maintenance workflows</li>
+            <li>Worked with virtualization environments including VirtualBox, observing how virtual machines are provisioned and managed in a corporate setting</li>
+            <li>Observed cybersecurity practices, network operations, and IT support procedures in a large-scale organizational environment</li>
           </ul>
         </div>
 
@@ -699,9 +787,10 @@
           <h3>Automation & Development Projects</h3>
           <div class="timeline-org">Independent</div>
           <ul>
-            <li>Built Python automation bots to eliminate repetitive manual workflows</li>
-            <li>Developed small-scale applications to sharpen programming and systems thinking</li>
-            <li>Actively self-studying networking, cybersecurity, and systems administration</li>
+            <li>Developed custom Discord bots in Python for clients using discord.py, handling event-driven automation, command routing, and real-time data processing</li>
+            <li>Designed and deployed this portfolio site (brianbrower.me) using GitHub Pages with custom DNS configuration via Namecheap</li>
+            <li>Manages Git repositories and version control workflows across personal and business-related projects</li>
+            <li>Currently building Bzzy, a full-stack business management application using React, TypeScript, FastAPI, and Supabase</li>
           </ul>
         </div>
 
@@ -711,10 +800,41 @@
           <h3>Team Lead</h3>
           <div class="timeline-org">Panera Bread — Stow, OH</div>
           <ul>
-            <li>Supervised daily operations, trained new employees, and resolved escalations in a high-volume environment</li>
+            <li>Supervised daily operations, trained new employees, and resolved escalations in a high-volume fast-paced environment</li>
           </ul>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ── -->
+  <section id="projects">
+    <div class="container">
+      <div class="section-label reveal">Projects</div>
+      <h2 class="reveal">Things I've Built</h2>
+      <div class="section-divider reveal"></div>
+      <div class="project-grid">
+        <div class="project-card reveal">
+          <h3>Bzzy (Business Management Application)</h3>
+          <span class="project-date">2026 – Present</span>
+          <p class="project-desc">Full-stack app built to automate and manage operations for live landscaping businesses</p>
+          <ul>
+            <li>Built with React, TypeScript, FastAPI, and Supabase</li>
+            <li>Features automated scheduling, invoicing, client management, and team communication</li>
+            <li>Designed to replace manual workflows across a real multi-user business environment</li>
+          </ul>
+        </div>
+        <div class="project-card reveal">
+          <h3>Nature's Edge Landscaping Automation Suite</h3>
+          <span class="project-date">2024 – Present</span>
+          <p class="project-desc">Python automation tools deployed against live business workflows</p>
+          <ul>
+            <li>Intake bots, task routing, invoicing automation, and data processing pipelines</li>
+            <li>Integrated with Google Workspace across a 10+ person team</li>
+            <li>Reduced manual administrative workload significantly</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -747,10 +867,11 @@
       <div class="section-label reveal">Contact</div>
       <h2 class="reveal">Let's Connect</h2>
       <div class="section-divider reveal" style="margin-left:auto;margin-right:auto;"></div>
-      <p class="reveal">I'm actively seeking IT internships and co-ops for 2026–2027, and freelance website work. If you're looking for someone who solves problems, learns fast, and builds quality programs, let's talk.</p>
+      <p class="reveal">I'm actively seeking IT, software development, and business ops internships for Spring/Summer 2027. I also take on freelance web projects. If you're looking for someone who solves problems, learns fast, and ships real work, let's talk.</p>
       <div class="contact-links reveal">
         <a href="mailto:bbrower2@kent.edu" class="btn btn-primary">bbrower2@kent.edu</a>
         <a href="tel:3306906507" class="btn btn-secondary">(330) 690-6507</a>
+        <a href="https://github.com/bbrower33" class="btn btn-secondary" target="_blank" rel="noopener">github.com/bbrower33</a>
       </div>
     </div>
   </section>
@@ -801,11 +922,10 @@
 
     // ── Typewriter ──────────────────────────────────────
     const phrases = [
-      'CS Student',
-      'Web Developer',
-      'IT Problem Solver',
+      'CS Student @ Kent State',
+      'IT & Software Development Intern Candidate',
       'Automation Builder',
-      'Intern Candidate',
+      'Problem Solver — Spring/Summer 2027',
     ];
     let pi = 0, ci = 0, deleting = false;
     const el = document.getElementById('typed');
